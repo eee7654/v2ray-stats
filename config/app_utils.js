@@ -37,3 +37,19 @@ export const nextConnectConfig = {
 }
 
 export const isWindows = process.platform == 'win32'
+
+export const formatTraffic = (trafficBytes)=> {
+  if (trafficBytes < 1024) {
+    return (trafficBytes / 1).toFixed(2) + " B";
+  } else if (trafficBytes < 1024 * 1024) {
+    return (trafficBytes / 1024).toFixed(2) + " KB";
+  } else if (trafficBytes < 1024 * 1024 * 1024) {
+    return (trafficBytes / (1024 * 1024)).toFixed(2) + " MB";
+  } else if (trafficBytes < 1024 * 1024 * 1024 * 1024) {
+    return (trafficBytes / (1024 * 1024 * 1024)).toFixed(2) + " GB";
+  } else if (trafficBytes < 1024 * 1024 * 1024 * 1024 * 1024) {
+    return (trafficBytes / (1024 * 1024 * 1024 * 1024)).toFixed(2) + " TB";
+  } else {
+    return (trafficBytes / (1024 * 1024 * 1024 * 1024 * 1024)).toFixed(2) + " EB";
+  }
+}

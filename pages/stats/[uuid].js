@@ -4,6 +4,7 @@ import ClientTraffic from '../../models/ClientTraffic'
 import { authPages } from '../../config/iron_session'
 import moment from 'jalali-moment'
 import DataCard from '../../components/data_card'
+import { formatTraffic } from '../../config/app_utils'
 
 export const getServerSideProps = authPages(async (context) => {
   console.log(context.query)
@@ -56,20 +57,3 @@ export default function Home(srvData) {
     </>
   )
 }
-
-function formatTraffic(trafficBytes) {
-  if (trafficBytes < 1024) {
-    return (trafficBytes / 1).toFixed(2) + " B";
-  } else if (trafficBytes < 1024 * 1024) {
-    return (trafficBytes / 1024).toFixed(2) + " KB";
-  } else if (trafficBytes < 1024 * 1024 * 1024) {
-    return (trafficBytes / (1024 * 1024)).toFixed(2) + " MB";
-  } else if (trafficBytes < 1024 * 1024 * 1024 * 1024) {
-    return (trafficBytes / (1024 * 1024 * 1024)).toFixed(2) + " GB";
-  } else if (trafficBytes < 1024 * 1024 * 1024 * 1024 * 1024) {
-    return (trafficBytes / (1024 * 1024 * 1024 * 1024)).toFixed(2) + " TB";
-  } else {
-    return (trafficBytes / (1024 * 1024 * 1024 * 1024 * 1024)).toFixed(2) + " EB";
-  }
-}
-
