@@ -18,6 +18,9 @@
 #logs
 /logs
 
+#DB Example
+x-ui-english.db
+
 # misc
 .DS_Store
 *.pem
