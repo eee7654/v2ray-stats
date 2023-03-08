@@ -13,20 +13,26 @@ export const getServerSideProps = authPages(async (context) => {
     let settings = JSON.parse(uInbound.settings)
     let clients = settings.clients
     let uClient = clients.find(client=>client.id == context.query.uuid)
-    let dataArray = await ClientTraffic
-    .query()
-    .select('*')
-    .where('email',uClient.email)
-    .andWhere('inbound_id',context.query.inbound)
-    if(dataArray.length == 1){
-      const trafficData = dataArray[0]
-      trafficData.expiry_time = moment(trafficData.expiry_time/1000,'X').locale('fa').format('YYYY-MM-DD')
-      trafficData.up = formatTraffic(trafficData.up)
-      trafficData.down = formatTraffic(trafficData.down)
-      trafficData.total = formatTraffic(trafficData.total)
-      return {
-        props:{
-          trafficData:trafficData.toJSON()
+    if(uClient != undefined){
+      let dataArray = await ClientTraffic
+      .query()
+      .select('*')
+      .where('email',uClient.email)
+      .andWhere('inbound_id',context.query.inbound)
+      if(dataArray.length == 1){
+        const trafficData = dataArray[0]
+        trafficData.expiry_time = moment(trafficData.expiry_time/1000,'X').locale('fa').format('YYYY-MM-DD')
+        trafficData.up = formatTraffic(trafficData.up)
+        trafficData.down = formatTraffic(trafficData.down)
+        trafficData.total = formatTraffic(trafficData.total)
+        return {
+          props:{
+            trafficData:trafficData.toJSON()
+          }
+        }
+      }else{
+        return {
+          notFound:true
         }
       }
     }else{
