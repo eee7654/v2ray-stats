@@ -28,7 +28,11 @@ export const getServerSideProps = authPages(async (context) => {
         }
         trafficData.up = formatTraffic(trafficData.up)
         trafficData.down = formatTraffic(trafficData.down)
-        trafficData.total = formatTraffic(trafficData.total)
+        if(trafficData.total != 0){
+          trafficData.total = formatTraffic(trafficData.total)
+        }else{
+          trafficData.total = 'Unlimited'
+        }
         return {
           props:{
             trafficData:trafficData.toJSON()
