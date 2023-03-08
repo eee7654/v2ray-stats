@@ -1,0 +1,70 @@
+body {
+  background: url("/assets/img/bg.png") center / cover;
+  min-height: 100vh;
+  color: rgb(255,255,255);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.main-card {
+  width: 90%;
+  max-width: 500px;
+  background: linear-gradient(0deg, rgba(254, 254, 254, 0.1), rgba(254, 254, 254, 0.1)), linear-gradient(132.16deg, rgba(58, 129, 191, 0.0064) 5.51%, rgba(65, 48, 90, 0.0024) 93.89%);
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+}
+
+.main-card::before {
+  display: flex;
+  content: "";
+  inset: 0;
+  height: 350px;
+  border-radius: 20px;
+  padding: 3px;
+  background: linear-gradient(136.42deg, #FB37FF 6.83%, #FB37FF 6.84%, rgba(155, 111, 238, 0) 35.11%, rgba(123, 127, 234, 0) 60.61%, #18B2DE 88.3%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.data-card{
+  position: absolute;
+  width: 90%;
+  max-width: 500px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row-info {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.account-name {
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+.head-5 {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.titles {
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+}
+
+
+.nextBody{
+  min-height: 100vh;
+}

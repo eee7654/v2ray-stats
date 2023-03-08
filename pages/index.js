@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { authPages } from '../config/iron_session'
 
-export default function Home() {
+export default function Home(srvData) {
   return (
     <div className={styles.container}>
       <Head>
@@ -69,3 +70,20 @@ export default function Home() {
     </div>
   )
 }
+
+function formatTraffic(trafficBytes) {
+  if (trafficBytes < 1024) {
+    return (trafficBytes / 1).toFixed(2) + "B";
+  } else if (trafficBytes < 1024 * 1024) {
+    return (trafficBytes / 1024).toFixed(2) + "KB";
+  } else if (trafficBytes < 1024 * 1024 * 1024) {
+    return (trafficBytes / (1024 * 1024)).toFixed(2) + "MB";
+  } else if (trafficBytes < 1024 * 1024 * 1024 * 1024) {
+    return (trafficBytes / (1024 * 1024 * 1024)).toFixed(2) + "GB";
+  } else if (trafficBytes < 1024 * 1024 * 1024 * 1024 * 1024) {
+    return (trafficBytes / (1024 * 1024 * 1024 * 1024)).toFixed(2) + "TB";
+  } else {
+    return (trafficBytes / (1024 * 1024 * 1024 * 1024 * 1024)).toFixed(2) + "EB";
+  }
+}
+
