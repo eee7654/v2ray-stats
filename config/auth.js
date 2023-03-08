@@ -1,10 +1,11 @@
 'use strict';
 import { sealData,unsealData } from 'iron-session'
+import { cookie_pass } from "./application";
 
 module.exports = {
 	sign: (payload, exp) => {
 		return new Promise((resolve,reject)=>{
-			sealData(payload,{password:process.env.COOKIE_PASS,ttl:exp})
+			sealData(payload,{password:cookie_pass,ttl:exp})
 			.then((token)=>{
 				resolve(token)
 			})
@@ -15,7 +16,7 @@ module.exports = {
 		
 	},
 	verify: async(token,exp) => {
-		const decrypted = await unsealData(token,{password:process.env.COOKIE_PASS,ttl:exp})
+		const decrypted = await unsealData(token,{password:cookie_pass,ttl:exp})
 		if(!isEmpty(decrypted)){
 			return decrypted
 		}else{

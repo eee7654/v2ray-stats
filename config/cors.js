@@ -1,6 +1,6 @@
 import Cors from 'cors'
 
-var allowedOrigins = ['http://app.jakhoob.com:3000']
+var allowedOrigins = ['*']
 const cors = Cors({
     origin: function(origin, callback) {
         // allow requests with no origin 

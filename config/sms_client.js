@@ -37,31 +37,5 @@ class SmsClient {
             })
         })
     }
-
-    sendAccVerfied(phone){
-        return new Promise((resolve,reject)=>{
-            axios.post(params.sms_url,{
-                op: "pattern",
-                user: params.sms_user,
-                pass: params.sms_pass,
-                fromNum: params.sms_num,
-                toNum: phone,
-                patternCode: params.sms_verify_pattern,
-                inputData: []
-            })
-            .then((response)=>{
-                if(!Array.isArray(response.data)){
-                    resolve()
-                }else{
-                    console.error(response.data[1])
-                    reject(response.data[1])
-                }
-            })
-            .catch((reason)=>{
-                console.error(reason)
-                reject(reason)
-            })
-        })
-    }
 }
 module.exports = SmsClient

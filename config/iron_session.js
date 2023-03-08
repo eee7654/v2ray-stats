@@ -1,13 +1,12 @@
 import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
+import { cookie_pass, cookie_name } from "./application";
 
 const sessionOptions = {
-  password: process.env.COOKIE_PASS,
-  cookieName: process.env.COOKIE_NAME,
+  password: cookie_pass,
+  cookieName: cookie_name,
   cookieOptions: {
     secure: process.env.NODE_ENV === "production",
-    /*maxAge:60*1000*/
-  }/*,
-  ttl:60*/
+  }
 };
 
 export function authApi(handler) {

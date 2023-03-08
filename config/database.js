@@ -1,13 +1,14 @@
 'user strict';
-//import { db_host } from './application'
+import { db_path } from './application'
 import knex from 'knex'
 var dbpool
+
 export function db() {
     if (dbpool == undefined) {
         dbpool = knex({
-            client: 'sqlite3', // or 'better-sqlite3'
+            client: 'sqlite3',
             connection: {
-                filename:'E:\\NodejsProjects\\v2ray-stats\\x-ui-english.db'
+                filename:db_path
             },
             debug:process.env.NODE_ENV !== "production"
         })
