@@ -20,7 +20,12 @@ export const getServerSideProps = authPages(async (context) => {
       .andWhere('inbound_id',context.query.inbound)
       if(dataArray.length == 1){
         const trafficData = dataArray[0]
-        trafficData.expiry_time = moment(trafficData.expiry_time/1000,'X').locale('fa').format('YYYY-MM-DD')
+        console.log(trafficData.expiry_time)
+        if(trafficData.expiry_time != 0){
+          trafficData.expiry_time = moment(trafficData.expiry_time/1000,'X').locale('fa').format('YYYY-MM-DD')
+        }else{
+          trafficData.expiry_time = 'Unlimited'
+        }
         trafficData.up = formatTraffic(trafficData.up)
         trafficData.down = formatTraffic(trafficData.down)
         trafficData.total = formatTraffic(trafficData.total)
