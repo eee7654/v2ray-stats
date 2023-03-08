@@ -7,7 +7,6 @@ import DataCard from '../../components/data_card'
 import { formatTraffic } from '../../config/app_utils'
 
 export const getServerSideProps = authPages(async (context) => {
-  console.log(context.query)
   let uInbound = await Inbound.query().select('*').findById(context.query.inbound)
   if(uInbound != undefined){
     let settings = JSON.parse(uInbound.settings)
