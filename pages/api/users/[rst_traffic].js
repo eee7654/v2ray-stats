@@ -28,7 +28,6 @@ const prepareData = {
                     total:0
                 })
                 .where('user',myUser.username)
-                console.log(userTraffic)
                 if(userTraffic == 1){
                     res.status(200).json({status:'ok'})
                 }else{
