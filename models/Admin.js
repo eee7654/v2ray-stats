@@ -1,29 +1,18 @@
 import { Model } from 'objection'
 import db from '../config/database'
+import { db_driver } from '../config/application'
+const adminTable = {
+    sqlite:'users',
+    mysql:'setting'
+}
 class Admin extends Model {
 
     static get tableName() {
-        return 'system_admins';
+        return adminTable[db_driver]
     }
 
     static get idColumn() {
         return ['id'];
-    }
-
-    static get jsonSchema () {
-        return {
-            type: 'object',
-            required: ['full_name','username','passwrd','phone','email'],
-            properties: {
-                full_name: {type:'string'},
-                phone: {type: 'string'},
-                username: {type: 'string'},
-                passwrd: {type: 'string'},
-                email: {type: 'string'},
-                last_login: {type: 'string'},
-                created_at:{type: 'string'}
-            }
-        };
     }
  
 }

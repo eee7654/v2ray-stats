@@ -22,6 +22,7 @@
     "jalali-moment": "^3.3.11",
     "knex": "^2.3.0",
     "moment-timezone": "^0.5.41",
+    "mysql2": "^3.3.1",
     "next": "13.2.3",
     "next-connect": "^0.12.2",
     "next-pwa": "^5.5.5",

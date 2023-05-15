@@ -53,3 +53,11 @@ export const formatTraffic = (trafficBytes)=> {
     return (trafficBytes / (1024 * 1024 * 1024 * 1024 * 1024)).toFixed(2) + " EB";
   }
 }
+
+export const formatTraffic2 = (trafficBytes)=> {
+  if (trafficBytes < 1024) {
+    return (trafficBytes / 1).toFixed(2) + " MB";
+  } else if (trafficBytes < 1024 * 1024) {
+    return (trafficBytes / 1024).toFixed(2) + " GB";
+  } 
+}
